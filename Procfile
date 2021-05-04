@@ -1,1 +1,1 @@
-web: nodemon prove02.js
+web: node prove02.js
