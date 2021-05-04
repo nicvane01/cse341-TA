@@ -1,4 +1,5 @@
 const path = require("path");
+const PORT = process.env.PORT || 5000;
 
 const bodyParser = require("body-parser");
 
@@ -16,4 +17,4 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(prove02.routes);
 
-app.listen(5000);
+app.listen(PORT);
