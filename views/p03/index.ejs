@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+          <li class="main-header__item"><a class="active" href="/">Shop</a></li>
+          <li class="main-header__item">
+            <a href="/product-list">Products</a>
+          </li>
+          <li class="main-header__item">
+            <a href="/cart">Cart</a>
+          </li>
+          <li class="main-header__item">
+            <a href="/orders">Orders</a>
+          </li>
+          <li class="main-header__item">
+            <a href="/add-product">Add Product</a>
+          </li>
+          <li class="main-header__item">
+            <a href="/admin-products">Admin Products</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <% if (prods.length > 0) { %>
+      <div class="grid">
+        <% for (let product of prods) { %>
+        <article class="product__item">
+          <header class="card__header">
+            <h1 class="product__title"><%= product.title %></h1>
+          </header>
+          <div class="card__image">
+            <img
+              src="<%= product.imageUrl %>"
+              alt="<%= product.title %>"
+              height="300px"
+              width="300px"
+            />
+          </div>
+          <div class="card__content">
+            <h2 class="product__price">$<%= product.price %></h2>
+            <textarea class="product__description" rows="5" cols="36" readonly>
+<%= product.description %></textarea
+            >
+          </div>
+          <form action="/cart" method="POST">
+            <button class="btn" type="submit">Add to Cart</button>
+            <input type="hidden" name="productId" value="<%= product.id %>" />
+          </form>
+        </article>
+        <% } %>
+      </div>
+      <% } else { %>
+      <h1>No Products Available.</h1>
+      <% } %>
+    </main>
+  </body>
+</html>
