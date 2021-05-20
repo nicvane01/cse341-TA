@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <% include ../includes/header.ejs %>
-</head>
+  <head>
+    <% include ../includes/header.ejs %> <% if (style) { %>
+    <style>
+      .text-center {
+        background-color: black;
+      }
+    </style>
+    <% } %>
+  </head>
 
-<body>
-  <% include ../includes/nav.ejs %>
-<div class="jumbotron text-center">
-  <div class="container">
-    <h1><%= title %></h1>
-    <p>This is the placeholder for Team Activity 04</p>
-  </div>
-</div>
-<div class="container">
-  
-</div>
-
-
-</body>
+  <body>
+    <% include ../includes/nav.ejs %>
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1><%= title %></h1>
+        <p>This is the placeholder for Team Activity 05</p>
+      </div>
+    </div>
+    <div class="container"></div>
+    <form action="/ta04/change-style" method="GET">
+      <button type="submit">Change Style</button>
+    </form>
+    <form action="/ta04/counter" method="POST">
+      <input type="hidden" value="true" name="increase" />
+      <button type="submit">increment</button>
+    </form>
+    <form action="/ta04/counter" method="POST">
+      <input type="hidden" value="false" name="increase" />
+      <button type="submit">decrement</button>
+    </form>
+    <form action="/ta04/reset" method="GET">
+      <button type="submit">destroy session</button>
+    </form>
+    <p>Count: <%= counter %></p>
+  </body>
 </html>
